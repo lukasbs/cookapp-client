@@ -1,0 +1,55 @@
+<div class="mt-5 mb-3 col-xl-9 col-8 m-auto alert" id="messageRow" #message></div>
+
+<div class="row col-7">
+  <p id="recipeName">{{recipe.name}}</p>
+</div>
+<div class="row col-7">
+  <p id="recipeSource">{{recipe.source}}</p>
+</div>
+<div class="row col-7">
+  <img src="{{recipe.image}}" height="300" width="500">
+</div>
+<div class="row col-7">
+  <textarea readonly id="recipeDescription" cols="100" rows="20">{{recipe.description}}</textarea>
+</div>
+
+<div *ngFor="let ingredient of recipe.ingredients; let i = index">
+  <div class="col-7 row" [ngClass]="getHighlightClass(i)">
+    <div>
+      <p>{{ingredient.name}}</p>
+    </div>
+    <div>
+      <p>{{ingredient.amount}}</p>
+    </div>
+  </div>
+</div>
+
+<div class="row p-2 col-7">
+  <div class="col-2">
+    <button type="button" class="btn btn-primary" routerLink="../recipe-list">Powrót</button>
+  </div>
+  <div class="col-2">
+    <button type="button" class="btn btn-success" (click)="this.highlight = !this.highlight">Porównaj z lodówką</button>
+  </div>
+  <div class="col-2">
+    <button type="button" class="btn btn-success" (click)="addToListHandler()">Dodaj produkty do listy</button>
+  </div>
+  <div class="col-2">
+    <button type="button" class="btn btn-success" (click)="addMissingToListHandler()">Dodaj brakujące produkty do listy</button>
+  </div>
+  <div class="col-2">
+    <button type="button" class="btn btn-success" (click)="addMissingAnduncertainToListHandler()">Dodaj brakujące oraz niepewne produkty do listy</button>
+  </div>
+</div>
+
+<div *ngIf="!favourite">
+  <div class="col-2">
+    <button type="button" class="btn btn-primary" (click)="addHandler()">Dodaj do ulubionych</button>
+  </div>
+</div>
+
+<div *ngIf="favourite">
+  <div class="col-2">
+    <button type="button" class="btn btn-warning" (click)="deleteHandler()">Usuń z ulubionych</button>
+  </div>
+</div>

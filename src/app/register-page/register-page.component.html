@@ -1,0 +1,19 @@
+<div class="text-center bg-dark p-5">
+  <div class="card bg-light col-xl-3 col-lg-4 col-md-6 col-sm-8 col-10 mx-auto">
+    <div class="card-body">
+      <form>
+        <img class="mb-3" src="../../assets/burger.png" height="100" width="100" alt="Burger"/>
+        <h1 class="h3 mb-3 font-weight-normal">Rejestracja</h1>
+        <label for="loginInput" class="sr-only">Login</label>
+        <input type="text" id="loginInput" class="form-control col-xl-9 col-8 mx-auto mb-1" placeholder="Login" required="" autofocus="" #loginInput>
+        <label for="passwordInput" class="sr-only">Hasło</label>
+        <input type="password" id="passwordInput" class="form-control col-xl-9 col-8 m-auto" placeholder="Hasło" required="" #passwordInput>
+        <label for="passwordInput" class="sr-only">Powtórz hasło</label>
+        <input type="password" id="repeatPasswordInput" class="form-control col-xl-9 col-8 m-auto" placeholder="Powtórz hasło" required="" #repeatPasswordInput>
+        <button class="btn btn-success mt-3 mb-2 col-xl-9 col-8" id="registerButton" type="submit" (click)="doRegister()">Zarejestruj się</button>
+        <button class="btn btn-primary mb-2 col-xl-9 col-8" id="loginButton" type="button" routerLink="../login-page">Logowanie</button>
+        <div class="mt-5 mb-3 col-xl-9 col-8 m-auto alert" id="messageRow" #message></div>
+      </form>
+    </div>
+  </div>
+</div>

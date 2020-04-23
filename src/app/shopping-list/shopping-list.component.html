@@ -1,0 +1,27 @@
+<div class="mt-5 mb-3 col-xl-9 col-8 m-auto alert" id="messageRow" #message></div>
+<form (ngSubmit)="addHandler(f)" #f="ngForm">
+  <div class="form-row p-2">
+    <div class="col-4">
+      <input id="name" name="name" class="form-control" ngModel type="text" placeholder="Nazwa" #name>
+    </div>
+    <div class="col-2">
+      <input id="amount" name="amount" class="form-control" ngModel type="text" placeholder="Ilość" #amount>
+    </div>
+    <div class="col-2">
+      <button type="submit" class="btn btn-primary">Dodaj</button>
+    </div>
+    <div class="col-2">
+      <button type="button" class="btn btn-danger" (click)="generatePDF()">PDF</button>
+    </div>
+  </div>
+</form>
+
+<hr>
+
+<ul class="list-group">
+  <div class="list-group-item row" *ngFor="let item of shoppingListItems; let i = index">
+    {{item.name}} ({{item.amount}})
+    <button type="button" class="btn btn-danger" (click)="deleteHandler(i)">X</button>
+    <button type="button" class="btn btn-primary" (click)="editHandler(i)">Edit</button>
+  </div>
+</ul>

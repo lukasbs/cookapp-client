@@ -1,0 +1,19 @@
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+  <div class="navbar-collapse collapse justify-content-stretch">
+    <ul class="navbar-nav">
+      <li routerLinkActive="active" class="nav-item"><a class="nav-link" routerLink="../recipe-list">Przepisy</a></li>
+    </ul>
+    <ul class="navbar-nav">
+      <li routerLinkActive="active" class="nav-item"><a class="nav-link" routerLink="../shopping-list">Lista zakupów</a></li>
+    </ul>
+    <ul class="navbar-nav">
+      <li routerLinkActive="active" class="nav-item"><a class="nav-link" routerLink="../fridge">Lodówka</a></li>
+    </ul>
+    <ul class="navbar-nav">
+      <li routerLinkActive="active" class="nav-item"><a class="nav-link" routerLink="../favourite">Ulubione</a></li>
+    </ul>
+  </div>
+  <div class="col-1">
+    <button type="button" class="btn btn-primary" (click)="logoutHandler()">Wyloguj</button>
+  </div>
+</nav>
