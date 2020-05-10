@@ -19,7 +19,7 @@ export class RecipeListComponent implements OnInit, OnDestroy {
   currentRecipesPageChanged: Subscription;
   messageChanged: Subscription;
 
-  constructor(private appService: AppService, private router: Router) { }
+  constructor(public appService: AppService, private router: Router) { }
 
   ngOnInit() {
     this.recipeListChanged = this.appService.recipeListChanged.subscribe(
@@ -53,7 +53,17 @@ export class RecipeListComponent implements OnInit, OnDestroy {
 
     this.appService.getAllRecipes();
     this.appService.getFridgeItems();
+  }
 
+  getOverflowClass(recipeNameRef) {
+    if ((recipeNameRef.scrollWidth > recipeNameRef.offsetWidth) && !recipeNameRef.innerHTML.toString().includes('...')) {
+      while (recipeNameRef.scrollWidth > recipeNameRef.offsetWidth) {
+        recipeNameRef.innerHTML = recipeNameRef.innerHTML.slice(0, -1);
+      }
+      recipeNameRef.innerHTML = recipeNameRef.innerHTML.toString().slice(0, -1);
+      recipeNameRef.innerHTML += '...';
+    }
+    return {'': true};
   }
 
   nextPage() {
@@ -119,5 +129,4 @@ export class RecipeListComponent implements OnInit, OnDestroy {
     this.currentRecipesPageChanged.unsubscribe();
     this.messageChanged.unsubscribe();
   }
-
 }

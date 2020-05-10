@@ -3,8 +3,9 @@ import {Subscription} from 'rxjs';
 import {FridgeItemModel} from '../model/FridgeItemModel';
 import {AppService} from '../app.service';
 import {NgForm} from '@angular/forms';
-import {Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {FridgeItemEditModel} from '../model/FridgeItemEditModel';
+import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 
 @Component({
   selector: 'app-fridge',
@@ -22,7 +23,7 @@ export class FridgeComponent implements OnInit, OnDestroy {
 
   public fridgeItems: FridgeItemModel[] = [];
 
-  constructor(private appService: AppService, private router: Router) { }
+  constructor(public appService: AppService, private modalService: NgbModal, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.userDataChanged = this.appService.userDataChanged.subscribe(
@@ -58,11 +59,11 @@ export class FridgeComponent implements OnInit, OnDestroy {
     const tomorrowDate: Date = new Date(new Date().setDate(currentDate.getDate() + 1)) ;
     if (this.fridgeItems[i].expirationDate.toLocaleDateString() === currentDate.toLocaleDateString() ||
       this.fridgeItems[i].expirationDate.toLocaleDateString() === tomorrowDate.toLocaleDateString()) {
-        return {'bg-warning': true};
+        return {'text-warning': true};
     } else if (this.fridgeItems[i].expirationDate < currentDate) {
-      return {'bg-danger': true};
+      return {'text-danger': true};
     } else {
-      return {'bg-light': true};
+      return {'text-success': true};
     }
   }
 
@@ -80,12 +81,30 @@ export class FridgeComponent implements OnInit, OnDestroy {
     this.appService.deleteFridgeItem(this.fridgeItems[i].name, this.fridgeItems[i].amount, this.fridgeItems[i].expirationDate);
   }
 
-  editHandler(i: number) {
+  // editHandler(i: number) {
+  //   this.appService.currentlyEditedFridgeItem = new FridgeItemEditModel(this.fridgeItems[i].name, this.fridgeItems[i].amount.split(' ')[0],
+  //     this.fridgeItems[i].amount.split(' ')[1], this.fridgeItems[i].expirationDate);
+  //
+  //   this.appService.currentlyEditedFridgeItemChanged.next(this.appService.currentlyEditedFridgeItem);
+  //   this.router.navigate(['/fridge-edit']);
+  // }
+
+  editHandler(i: number, fridgeEdit) {
     this.appService.currentlyEditedFridgeItem = new FridgeItemEditModel(this.fridgeItems[i].name, this.fridgeItems[i].amount.split(' ')[0],
       this.fridgeItems[i].amount.split(' ')[1], this.fridgeItems[i].expirationDate);
 
     this.appService.currentlyEditedFridgeItemChanged.next(this.appService.currentlyEditedFridgeItem);
-    this.router.navigate(['/fridge-edit']);
+    this.router.navigate(
+      [],
+      {
+        relativeTo: this.route,
+        queryParams: { edit: 'true' },
+        queryParamsHandling: 'merge'
+      });
+    this.modalService.open(fridgeEdit, { centered: true, backdropClass: 'modal-dark-backdrop'})
+      .result.then(() => {}, () => {
+      this.router.navigate(['/fridge']);
+    });
   }
 
   ngOnDestroy(): void {

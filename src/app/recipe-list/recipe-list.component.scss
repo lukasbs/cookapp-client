@@ -1,0 +1,26 @@
+@import "../../variables";
+
+.component-header-menu-misc-panel {
+  flex-direction: column;
+
+  .search-bar{
+    display: flex;
+    align-self: center;
+    width: $recipe-list-search-bar-width;
+    margin: $recipe-list-search-bar-margin;
+
+    > input {
+      margin: $recipe-list-search-bar-input-margin
+    }
+  }
+}
+
+.recipes-footer {
+  display: flex;
+  padding: $recipe-list-recipes-footer-padding;
+  justify-content: center;
+
+  button {
+    margin: $recipe-list-recipes-footer-button-margin;
+  }
+}

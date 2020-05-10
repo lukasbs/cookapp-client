@@ -2,9 +2,11 @@ import {Component, ElementRef, OnDestroy, OnInit, ViewChild} from '@angular/core
 import {AppService} from '../app.service';
 import {NgForm} from '@angular/forms';
 import {Subscription} from 'rxjs';
-import {Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import * as jsPDF from 'jspdf';
 import {IngredientModel} from '../model/IngredientModel';
+import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import {Tomorrow} from 'src/assets/Tomorrow-normal.js';
 
 @Component({
   selector: 'app-shopping-list',
@@ -21,7 +23,7 @@ export class ShoppingListComponent implements OnInit, OnDestroy {
   userDataChanged: Subscription;
   messageChanged: Subscription;
 
-  constructor(private appService: AppService, private router: Router) { }
+  constructor(private appService: AppService, private modalService: NgbModal, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.userDataChanged = this.appService.userDataChanged.subscribe(
@@ -56,14 +58,27 @@ export class ShoppingListComponent implements OnInit, OnDestroy {
     this.appService.deleteShoppingListItem(this.shoppingListItems[i].name, this.shoppingListItems[i].amount);
   }
 
-  editHandler(i: number) {
+  editHandler(i: number, shoppingListEdit) {
     this.appService.currentlyEditedShoppingListItem = this.shoppingListItems[i];
     this.appService.currentlyEditedShoppingListItemChanged.next(this.appService.currentlyEditedShoppingListItem);
-    this.router.navigate(['/shopping-list-edit']);
+    this.router.navigate(
+      [],
+      {
+        relativeTo: this.route,
+        queryParams: { edit: 'true' },
+        queryParamsHandling: 'merge'
+      });
+    this.modalService.open(shoppingListEdit, { centered: true, backdropClass: 'modal-dark-backdrop'})
+      .result.then(() => {}, () => {
+      this.router.navigate(['/shopping-list']);
+    });
   }
 
   generatePDF() {
     const doc = new jsPDF();
+    doc.addFileToVFS('Tomorrow-Regular.ttf', Tomorrow);
+    doc.addFont('Tomorrow-Regular.ttf', 'Tomorrow', 'normal');
+    doc.setFont('Tomorrow');
 
     doc.setFontSize(35);
     doc.text(70, 20, 'Lista Zakupów');

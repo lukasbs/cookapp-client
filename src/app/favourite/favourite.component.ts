@@ -14,7 +14,7 @@ export class FavouriteComponent implements OnInit, OnDestroy {
 
   public favouriteRecipes: RecipeModel[] = [];
 
-  constructor(private appService: AppService,  private router: Router) { }
+  constructor(public appService: AppService,  private router: Router) { }
 
   ngOnInit() {
     this.userDataChanged = this.appService.userDataChanged.subscribe(
@@ -24,6 +24,17 @@ export class FavouriteComponent implements OnInit, OnDestroy {
     );
 
     this.appService.getFavouriteRecipes();
+  }
+
+  getOverflowClass(recipeNameRef) {
+    if ((recipeNameRef.scrollWidth > recipeNameRef.offsetWidth) && !recipeNameRef.innerHTML.toString().includes('...')) {
+      while (recipeNameRef.scrollWidth > recipeNameRef.offsetWidth) {
+        recipeNameRef.innerHTML = recipeNameRef.innerHTML.slice(0, -1);
+      }
+      recipeNameRef.innerHTML = recipeNameRef.innerHTML.toString().slice(0, -1);
+      recipeNameRef.innerHTML += '...';
+    }
+    return {'': true};
   }
 
   previewHandler(i: number) {

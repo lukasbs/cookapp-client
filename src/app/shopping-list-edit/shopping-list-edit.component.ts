@@ -4,6 +4,7 @@ import {IngredientModel} from '../model/IngredientModel';
 import {AppService} from '../app.service';
 import {Router} from '@angular/router';
 import {NgForm} from '@angular/forms';
+import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-shopping-list-edit',
@@ -17,7 +18,7 @@ export class ShoppingListEditComponent implements OnInit, OnDestroy {
 
   public item: IngredientModel;
 
-  constructor(private appService: AppService, private router: Router) { }
+  constructor(private appService: AppService, private modalService: NgbModal, private router: Router) { }
 
   ngOnInit() {
     if (this.appService.currentlyEditedShoppingListItem === undefined || this.appService.currentlyEditedShoppingListItem === null) {
@@ -38,10 +39,14 @@ export class ShoppingListEditComponent implements OnInit, OnDestroy {
   editHandler(form: NgForm) {
     if (form.value.name !== null && form.value.name !== '' && form.value.amount !== null && form.value.amount !== '') {
       this.appService.updateShoppingListItem(this.item.name, this.item.amount, form.value.itemName, form.value.itemAmount);
-      this.router.navigate(['/shopping-list']);
+      this.closeHandler();
     } else {
       this.appService.addErrorMessage(this.messageRef.nativeElement, 'Proszę wypełnić wszystkie pola!');
     }
+  }
+
+  closeHandler() {
+    this.modalService.dismissAll();
   }
 
   ngOnDestroy(): void {

@@ -64,12 +64,12 @@ export class RecipeViewComponent implements OnInit, OnDestroy {
     if (this.highlight) {
       const foundProduct: FridgeItemModel = this.findInFridge(this.recipe.ingredients[i].name);
       if (foundProduct !== null) {
-        bgClass = {'bg-warning': true};
+        bgClass = {'text-warning': true};
         if (this.checkQuantity(foundProduct, this.recipe.ingredients[i].amount)) {
-          bgClass = {'bg-success': true};
+          bgClass = {'text-success': true};
         }
       } else {
-        bgClass = {'bg-danger': true};
+        bgClass = {'text-danger': true};
       }
     }
     return bgClass;
@@ -104,9 +104,9 @@ export class RecipeViewComponent implements OnInit, OnDestroy {
       return false;
     } else if (normalizedProduct.unit === normalizedIngredient.unit) {
       return normalizedProduct.quantity >= normalizedIngredient.quantity;
-    } else if ((normalizedProduct.unit === 'g' || normalizedProduct.unit === 'ml') && normalizedIngredient.unit === 'szklanek' ||
+    } else if ((normalizedProduct.unit === 'g' || normalizedProduct.unit === 'ml') && (normalizedIngredient.unit === 'szklanek' ||
         normalizedIngredient.unit === 'łyżek' || normalizedIngredient.unit === 'łyżeczek' || normalizedIngredient.unit === 'ml' ||
-        normalizedIngredient.unit === 'g') {
+        normalizedIngredient.unit === 'g')) {
       return normalizedProduct.quantity >= this.getConvertedAmount(normalizedIngredient);
     }
 

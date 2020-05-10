@@ -1,1 +1,653 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css?family=Tomorrow&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Petit+Formal+Script&display=swap');
+@import "variables";
+@import "../node_modules/bootstrap/scss/bootstrap.scss";
+
+//MAIN ##################################################
+
+body {
+  font-family: 'Tomorrow', sans-serif !important;
+  width: 100% !important;
+  background: linear-gradient(10deg, rgba(186, 197, 75, 0.8) 0%, rgba(211, 220, 130, 0.8) 35%, rgba(237, 237, 220, 0.8) 100%) !important;
+  background: rgba(118, 174, 10, 0.7);
+  min-height: 100vh;
+}
+
+%default-hr {
+  border-color: $hr-border-color !important;
+  margin: $hr-margin;
+}
+
+%default-container {
+  border: $default-container-border !important;
+}
+
+%default-container-footer {
+  background-color: $second-dark-color !important;
+  color:white !important;
+}
+
+@media all and (max-width: 2525px) {
+  .card-container {
+    width: 1656px !important;
+  }
+}
+
+@media all and (max-width: 2015px) {
+  .card-container {
+    width: 1242px !important;
+  }
+
+  .recipe-ingredients-buttons-panel {
+    width: 5% !important;
+  }
+
+  .recipe-ingredients-list {
+    width: 65% !important;
+  }
+}
+
+@media all and (max-width: 1515px) {
+  .card-container {
+    width: 828px !important;
+  }
+}
+
+@media all and (max-width: 1440px) {
+  html {
+    font-size: 15px !important;
+  }
+
+  .add-new-product{
+    width: 80% !important;
+  }
+
+  .component-header-menu-title {
+    width: 45% !important;
+    padding: 3.5rem !important;
+  }
+
+  .ingredient-quantity {
+    width: 20%  !important;
+  }
+
+  .login {
+    width: 50% !important;
+  }
+}
+
+@media all and (max-width: 1024px) {
+  html {
+    font-size: 14px !important;
+  }
+
+  .component-header-menu-container {
+    margin: 0 3vw !important;
+  }
+
+  .component-header-menu-misc-panel{
+    padding: 0 !important;
+  }
+
+  .component-header-menu-misc-panel {
+    flex-direction: column !important;
+  }
+
+  .component-header-menu-misc-buttons-panel {
+    margin: 0 auto !important;
+    width: 80% !important;
+
+    > button {
+      width: 100% !important;
+    }
+  }
+
+  .ingredient-quantity {
+    width: 27%  !important;
+  }
+
+  .product-index {
+    width: 5% !important;
+  }
+
+  .recipe-description-header {
+    width: unset !important;
+  }
+
+  .login {
+    width: 60% !important;
+  }
+}
+
+@media all and (max-width: 880px) {
+  html {
+    font-size: 13.5px !important;
+  }
+
+  .card-container {
+    width: 414px !important;
+  }
+
+  .nav-menu {
+    flex-direction: column !important;
+  }
+
+  .navbar-nav {
+    text-align: center !important;
+  }
+
+  .component-header-menu-container {
+    margin: 0 1vw !important;
+  }
+
+  .component-header-menu-header {
+    flex-direction: column !important;
+  }
+
+  .component-header-menu-title {
+    width: 100% !important;
+  }
+
+  .component-header-menu-misc-panel {
+    width: 100% !important;
+  }
+
+  .vertical-hr {
+    display: none;
+  }
+
+  .ingredient-index {
+    width: 7%  !important;
+  }
+
+  .ingredient-quantity {
+    width: 35%  !important;
+  }
+
+  .nav-link {
+    margin: .3rem auto !important;
+  }
+}
+@media all and (max-width: 768px) {
+  %recipe-section {
+    flex-direction: column !important;
+  }
+
+  .recipe-image,
+  .recipe-title,
+  .recipe-ingredients-buttons-panel,
+  .recipe-ingredients-list,
+  .recipe-description-header,
+  .recipe-ingredients-header {
+    width: 100% !important;
+    box-shadow: none !important;
+    border-right: none !important;
+    border-left: none !important;
+  }
+
+  .recipe-ingredients-buttons-panel {
+    flex-direction: row !important;
+  }
+
+  .recipe-description-header {
+    min-height: unset !important;
+    writing-mode: unset !important;
+    text-orientation: unset !important;
+    order: -1;
+  }
+
+  .login {
+    width: 70% !important;
+  }
+}
+
+
+@media all and (max-width: 665px) {
+ .product-expiration-date-label {
+   display: none !important;
+ }
+
+  .product-index {
+    width: 7% !important;
+  }
+
+  .login {
+    width: 80% !important;
+  }
+}
+
+@media all and (max-width: 625px) {
+  html {
+    font-size: 13px !important;
+  }
+}
+
+@media all and (max-width: 560px) {
+
+  .component-header-menu-misc-buttons-panel,
+  .add-new-product,
+  .ingredients-panel,
+  .products-panel {
+    width: 95% !important;
+  }
+
+  .ingredients-panel {
+    font-size: 1rem !important;
+  }
+
+  .list-group-item {
+    padding: .75rem 0 !important;
+  }
+
+  .component-header-menu-container hr {
+    margin: 1rem !important;
+  }
+
+  .recipe-ingredient {
+    font-size: 1rem !important;
+  }
+
+  .login {
+    width: 90% !important;
+  }
+}
+
+@media all and (max-width: 425px) {
+  .btn,
+  .form-control {
+    padding: .375rem !important;
+  }
+
+  .ingredients-panel {
+    font-size: .95rem !important;
+  }
+
+  .card-container {
+    width: 366.75px !important;
+  }
+
+  .card-image {
+    width: 355.5px !important;
+  }
+
+  .card-panel {
+    width: 357.5px !important;
+  }
+}
+
+
+//ICONS ###################################################
+.icon-right {
+  margin: $icon-right-margin
+}
+
+.icon-left {
+  margin: $icon-left-margin
+}
+
+.icon-center {
+  margin: $icon-center-margin
+}
+
+//TEXT ###################################################
+.text-success {
+  color: $second-dark-color !important;
+}
+
+//ALERTS ##################################################
+.notification {
+  margin:$notification-margin;
+  width: 70%;
+  text-align: center;
+}
+
+//MODAL ##################################################
+.button-close-modal,
+.button-close-modal:focus {
+  border: none;
+  padding: $button-close-modal-padding;
+  margin: $button-close-modal-margin;
+  color: $main-color;
+  background: none;
+  outline: none
+}
+
+.modal-dark-backdrop {
+  background-color: $main-dark-color !important;
+  opacity: $modal-dark-backdrop-opacity !important;
+}
+
+.modal-content {
+  @extend %default-container
+}
+
+.modal-header{
+  @extend .card-header;
+  text-align: center !important;
+}
+
+.modal-body {
+  padding: 0 !important;
+}
+
+.modal-footer{
+  @extend .card-footer;
+
+  button{
+    padding: $modal-footer-button-padding;
+    margin: $modal-footer-button-margin !important;
+  }
+}
+
+.xl-modal {
+  > .modal-dialog {
+    max-width: 100%;
+    width: 60%;
+    overflow-y: initial !important;
+
+    > .modal-content {
+
+      .modal-body {
+        max-height: 85vh;
+        overflow-y: auto;
+      }
+    }
+  }
+}
+
+//LINK ##################################################
+a:hover {
+  color: $second-color !important;
+}
+
+a.active{
+  color: $second-light-color !important;
+}
+
+//BUTTON ################################################
+.btn-success{
+  color: $white !important;
+  background-color: $second-dark-color !important;
+  border-color: $second-color !important;
+}
+
+.btn-success:hover {
+  background-color: $second-color !important;
+  border-color: $second-color !important;
+}
+
+.btn-outline-success {
+  color: $white !important;;
+  border-color: $white!important;
+  background-color: transparent !important;
+}
+
+.btn-outline-success:hover {
+  color: $second-dark-color !important;
+  border-color: $second-dark-color !important;
+  background-color: $white !important;
+}
+
+.btn-success:active,
+.btn-outline-success:active {
+  color: $main-dark-color !important;
+  border-color: $second-light-color !important;
+  background-color: $second-light-color !important;
+  box-shadow: $default-box-shadow !important;
+}
+
+.btn-success:focus,
+.btn-outline-success:focus,
+.btn-outline-warning:focus,
+.btn-outline-dark:focus{
+  box-shadow: none !important;
+}
+
+.btn-outline-secondary {
+  color: $white !important;;
+  border-color: transparent!important;
+  background-color: transparent !important;
+}
+
+.btn-outline-secondary:hover {
+  color: $main-dark-color !important;;
+  border-color: transparent!important;
+  background-color: $white !important;
+}
+
+.btn-outline-warning {
+  color: $yellow !important;;
+  border-color: transparent!important;
+  background-color: transparent !important;
+}
+
+.btn-outline-warning:hover {
+  color: $main-color !important;
+  border-color: transparent!important;
+  background-color: transparent !important;
+}
+
+.btn-outline-dark {
+  color: $main-color !important;
+  border-color: transparent!important;
+  background-color: transparent !important;
+}
+
+.btn-outline-dark:hover {
+  color: $yellow !important;
+  border-color: transparent!important;
+  background-color: transparent !important;
+}
+
+.btn-outline-danger {
+  color: $main-color !important;
+  border-color: transparent!important;
+  background-color: transparent !important;
+}
+
+.btn-outline-danger:hover {
+  color: $red !important;
+  border-color: transparent!important;
+  background-color: transparent !important;
+}
+
+.btn-outline-info {
+  color: $main-color !important;
+  border-color: transparent!important;
+  background-color: transparent !important;
+}
+
+.btn-outline-info:hover {
+  color: $blue !important;
+  border-color: transparent!important;
+  background-color: transparent !important;
+}
+
+.btn, .btn-group {
+  white-space: nowrap !important;
+}
+
+.cross-button{
+  color: $white;
+}
+
+//CARD ##################################################
+.card-header, .card-footer {
+  @extend %default-container-footer
+}
+
+.card {
+  @extend %default-container;
+}
+
+.card-container {
+  width: 2070px;
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  margin:  0 auto;
+  padding: 1em 0;
+
+  .card-panel {
+    display: inline-flex;
+    min-width: unset !important;
+    width: 401px;
+    margin: .375em;
+    cursor: pointer;
+    overflow: hidden;
+
+    .card-title {
+      max-height: 30px;
+      white-space: nowrap;
+      overflow: hidden;
+      font-size: 20px;
+    }
+
+    .card-image {
+      width: 399px;
+      height: 266.5px;
+      cursor: pointer;
+    }
+  }
+}
+
+//FORM ##################################################
+.input-group {
+  width: auto !important;
+}
+
+.form-control:focus {
+  border-color: $second-color !important;
+  box-shadow: $default-box-shadow !important;
+}
+
+//HEADER ################################################
+.navbar-toggler {
+  color: $second-light-color !important;
+  outline: none !important;
+  box-shadow: none;
+}
+
+.collapse.show {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center;
+  justify-content: center !important;
+
+  & .nav-element{
+    width: 100% !important;
+    display: flex;
+    justify-content: space-between;
+    padding: .5em;
+  }
+
+  .user-section >button{
+    text-align: center;
+    width: 100% !important;
+  }
+}
+
+//EDIT PRODUCT PANEL ################################################
+.edit-product-panel {
+  width: 65%;
+  margin: 3em auto;
+}
+
+//COMPONENT HEADER MENU ################################################
+.component-header-menu-container {
+  background: $white;
+  margin: 0 9vw;
+  min-height: 93.35vh;
+
+  .component-header-menu-header {
+    display: flex;
+  }
+
+  hr {
+    @extend %default-hr;
+  }
+
+  .vertical-hr{
+    border:         none;
+    border-left:    1px solid $second-color;
+    width:          1px;
+    margin: $vertical-hr-margin;
+  }
+
+  .component-header-menu-title {
+    width: 55%;
+    text-align: center;
+    align-self: center;
+    padding: 5rem;
+    margin: 0;
+  }
+
+  .component-header-menu-misc-panel {
+    display: flex;
+    justify-content: center;
+    width: 45%;
+    padding: 1.5em;
+
+    .add-new-product {
+      display: flex;
+      flex-direction: column;
+      align-self: center;
+      width: 55%;
+      margin: 1em;
+
+      > * {
+        margin: .3em 0;
+      }
+    }
+
+    .component-header-menu-misc-buttons-panel {
+      width: 5%;
+      display: flex;
+      justify-content: center;
+      margin: 1.3em 0;
+    }
+  }
+}
+
+//LOGIN REGISTER ################################################
+.login {
+  width: $login-page-width;
+  max-width: 450px;
+  margin: $login-page-login-margin;
+
+  .login-container {
+    padding: $login-page-container-padding;
+
+    img.login-image {
+      display: block;
+      height: 100px;
+      width: 100px;
+      margin: $login-page-image-margin;
+    }
+
+    .login-form {
+      margin: $login-page-form-margin;
+
+      > h1 {
+        color: $login-page-header-color;
+        text-align: center;
+        margin: $login-page-h1-margin;
+      }
+
+      >*{
+        margin: $login-page-form-all-children-margin;
+      }
+
+      .login-button,
+      .register-button{
+        width: $login-page-elements-width;
+      }
+    }
+  }
+
+  .notification{
+    width: $login-page-elements-width;
+    margin: $login-notification-margin !important;
+  }
+}

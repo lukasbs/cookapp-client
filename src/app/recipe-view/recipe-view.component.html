@@ -1,55 +1,65 @@
-<div class="mt-5 mb-3 col-xl-9 col-8 m-auto alert" id="messageRow" #message></div>
+<article class="recipe-view">
+  <div class="recipe-container">
 
-<div class="row col-7">
-  <p id="recipeName">{{recipe.name}}</p>
-</div>
-<div class="row col-7">
-  <p id="recipeSource">{{recipe.source}}</p>
-</div>
-<div class="row col-7">
-  <img src="{{recipe.image}}" height="300" width="500">
-</div>
-<div class="row col-7">
-  <textarea readonly id="recipeDescription" cols="100" rows="20">{{recipe.description}}</textarea>
-</div>
+    <section class="recipe-header-section">
+      <aside class="recipe-image">
+        <img src="{{recipe.image}}" alt="Delicious dish">
+      </aside>
+      <div class="recipe-title">
+        <div class="" id="messageRow" #message></div>
+        <h1 class="recipe-name" id="recipeName">{{recipe.name}}
+          <button type="button" class="btn btn-outline-dark" *ngIf="!favourite" (click)="addHandler()"
+                  placement="top" ngbTooltip="Dodaj do ulubionych" [openDelay]="300" [closeDelay]="500" triggers="mouseenter:mouseleave">
+            <fa-icon class="icon-center" [icon]="['fas', 'star']"></fa-icon>
+          </button>
+          <button type="button" class="btn btn-outline-warning" *ngIf="favourite" (click)="deleteHandler()"
+                  placement="top" ngbTooltip="Usuń z ulubionych" [openDelay]="300" [closeDelay]="500" triggers="mouseenter:mouseleave">
+            <fa-icon class="icon-center" [icon]="['fas', 'star']"></fa-icon>
+          </button>
+        </h1>
+        <p class="recipe-source" id="recipeSource">{{recipe.source}}</p>
+      </div>
+    </section>
 
-<div *ngFor="let ingredient of recipe.ingredients; let i = index">
-  <div class="col-7 row" [ngClass]="getHighlightClass(i)">
-    <div>
-      <p>{{ingredient.name}}</p>
-    </div>
-    <div>
-      <p>{{ingredient.amount}}</p>
-    </div>
-  </div>
-</div>
+    <section class="recipe-ingredients-section">
+      <div class="recipe-ingredients-buttons-panel">
+        <button type="button" class="btn btn-outline-secondary" (click)="this.highlight = !this.highlight"
+                placement="top" ngbTooltip="Porównaj z lodówką" [openDelay]="300" [closeDelay]="500" triggers="mouseenter:mouseleave">
+          <fa-icon class="icon-center" [icon]="['fas', 'exchange-alt']"></fa-icon>
+        </button>
+        <div class="dropright">
+          <button class="btn btn-outline-secondary" id="addToList" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                  placement="top" ngbTooltip="Dodaj do listy zakupów" [openDelay]="300" [closeDelay]="500" triggers="mouseenter:mouseleave">
+            <fa-icon class="icon-center" [icon]="['fas', 'plus']"></fa-icon>
+          </button>
+          <div class="dropdown-menu" aria-labelledby="addToList">
+            <a class="dropdown-item" (click)="addToListHandler()"><span>Wszystkie produkty</span></a>
+            <a class="dropdown-item" (click)="addMissingToListHandler()"><span>Brakujące produkty</span></a>
+            <a class="dropdown-item" (click)="addMissingAnduncertainToListHandler()"><span>Brakujące oraz niepewne produkty</span></a>
+          </div>
+        </div>
+      </div>
+      <h2 class="recipe-ingredients-header">Składniki:</h2>
+      <div class="recipe-ingredients-list">
+        <div *ngFor="let ingredient of recipe.ingredients; let i = index">
+          <div class="recipe-ingredient" [ngClass]="getHighlightClass(i)">
+            <span class="recipe-ingredient-name">{{ingredient.name}}</span>
+            <span class="recipe-ingredient-amount">{{ingredient.amount}}</span>
+          </div>
+        </div>
+      </div>
+    </section>
 
-<div class="row p-2 col-7">
-  <div class="col-2">
-    <button type="button" class="btn btn-primary" routerLink="../recipe-list">Powrót</button>
-  </div>
-  <div class="col-2">
-    <button type="button" class="btn btn-success" (click)="this.highlight = !this.highlight">Porównaj z lodówką</button>
-  </div>
-  <div class="col-2">
-    <button type="button" class="btn btn-success" (click)="addToListHandler()">Dodaj produkty do listy</button>
-  </div>
-  <div class="col-2">
-    <button type="button" class="btn btn-success" (click)="addMissingToListHandler()">Dodaj brakujące produkty do listy</button>
-  </div>
-  <div class="col-2">
-    <button type="button" class="btn btn-success" (click)="addMissingAnduncertainToListHandler()">Dodaj brakujące oraz niepewne produkty do listy</button>
-  </div>
-</div>
+    <section class="recipe-description-section">
+      <article class="recipe-description" id="recipeDescription"><span>{{recipe.description}}</span></article>
+      <h2 class="recipe-description-header">Przygotowanie:</h2>
+    </section>
 
-<div *ngIf="!favourite">
-  <div class="col-2">
-    <button type="button" class="btn btn-primary" (click)="addHandler()">Dodaj do ulubionych</button>
+    <footer class="recipe-footer">
+      <button class="btn btn-outline-secondary" routerLink="../recipe-list" type="button">
+        <fa-icon class="icon-left" [icon]="['fas', 'chevron-left']"></fa-icon>
+        <span>Powrót</span>
+      </button>
+    </footer>
   </div>
-</div>
-
-<div *ngIf="favourite">
-  <div class="col-2">
-    <button type="button" class="btn btn-warning" (click)="deleteHandler()">Usuń z ulubionych</button>
-  </div>
-</div>
+</article>

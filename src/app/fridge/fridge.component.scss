@@ -1,0 +1,31 @@
+@import "../../variables";
+
+.products-panel {
+  width: $fridge-products-panel-width;
+  margin: $fridge-products-panel-margin;
+  padding: $fridge-products-panel-padding;
+
+  .product-body {
+    width: $fridge-product-body-width;
+    margin: $fridge-product-body-margin;
+    border-color: $second-dark-color;
+
+    .product-index {
+      width: $fridge-product-index-width;
+
+      span {
+        width: 100%;
+      }
+    }
+
+    .product-expiration-date-label {
+     border-radius: unset !important;
+    }
+
+    .product-name,
+    .product-quantity,
+    .product-expiration-date,{
+      background: $fridge-product-background;
+    }
+  }
+}

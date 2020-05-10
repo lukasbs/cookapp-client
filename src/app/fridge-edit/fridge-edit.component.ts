@@ -4,6 +4,7 @@ import {AppService} from '../app.service';
 import {Router} from '@angular/router';
 import {NgForm} from '@angular/forms';
 import {FridgeItemEditModel} from '../model/FridgeItemEditModel';
+import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-fridge-edit',
@@ -17,7 +18,7 @@ export class FridgeEditComponent implements OnInit, OnDestroy {
 
   public item: FridgeItemEditModel;
 
-  constructor(private appService: AppService, private router: Router) { }
+  constructor(private appService: AppService, private modalService: NgbModal, private router: Router) { }
 
   ngOnInit() {
     if (this.appService.currentlyEditedFridgeItem === undefined || this.appService.currentlyEditedFridgeItem === null) {
@@ -42,8 +43,12 @@ export class FridgeEditComponent implements OnInit, OnDestroy {
     } else {
       this.appService.updateFridgeItem(this.item.name, this.item.amount + ' ' + this.item.amountType, this.item.expirationDate,
         form.value.name, form.value.amount + ' ' + form.value.amountType, form.value.expirationDate);
-      this.router.navigate(['/fridge']);
+      this.closeHandler();
     }
+  }
+
+  closeHandler() {
+    this.modalService.dismissAll();
   }
 
   ngOnDestroy(): void {

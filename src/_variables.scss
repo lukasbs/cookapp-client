@@ -1,0 +1,92 @@
+@import "constrains";
+
+//GENERAL
+$font-family-base: -apple-system, system-ui, Quicksand, sans-serif !default;
+$main-dark-color: $gray-dark;
+$main-color: $gray;
+$main-light-color: $gray-light;
+$second-dark-color: $green-dark;
+$second-color: $green;
+$second-light-color: $green-light;
+$third-dark-color: $yellow-dark;
+$third-color: $yellow;
+$third-light-color: $yellow-light;
+
+//DEFAULT & CUSTOM & BOOTSTRAP OVERRIDE
+$notification-margin: 2em auto;
+$modal-footer-button-padding: 0.375em 2em;
+$modal-footer-button-margin: 0 1.5em;
+$button-close-modal-margin: auto 1em;
+$button-close-modal-padding: 0;
+$hr-border-color: $second-light-color;
+$hr-margin: 1em 3em;
+$default-box-shadow: 0 0 0.2em 0.2em $second-light-color;
+$default-container-border: 1px solid $second-color;
+$icon-right-margin: 0 0 0 .375em;
+$icon-left-margin: 0 .375em 0 0;
+$icon-center-margin: 0 .375em;
+$modal-dark-backdrop-opacity: 0.97;
+$vertical-hr-margin: .5 0;
+
+//HEADER
+$header-font-size: 1.125rem;
+$navigation-padding: 2.5em 10.5%;
+$navigation-bg-color: $white;
+$navigation-color: $second-dark-color;
+$navigation-border: 1px solid $main-light-color;
+$navigation-nav-menu-width: 70%;
+$navigation-user-section-width: 30%;
+$link-margin: 0 1.25em 0 0;
+$link-border-bottom: 1.3px solid $second-dark-color;
+$link-padding: 0.25em 0;
+$link-hover-border-color: $second-color;
+$link-active-border-color: $second-light-color;
+$link-icon-margin: 0 0.375em 0 0;
+$link-text-color: $second-dark-color;
+$link-hover-text-color: $second-color;
+
+//RECIPES LIST
+$recipe-list-search-bar-width: 75% !important;
+$recipe-list-search-bar-margin: 1em 0;
+$recipe-list-search-bar-input-margin: 0 0 0 0.3rem;
+$recipe-list-misc-buttons-panel-width: 75%;
+$recipe-list-misc-buttons-panel-margin: 0 auto;
+$recipe-list-recipes-footer-padding: 1.5rem;
+$recipe-list-recipes-footer-button-margin: 0 1em;
+
+//SHOPPING lIST
+$shopping-list-ingredients-panel-width: 90%;
+$shopping-list-ingredients-panel-margin: 0 auto;
+$shopping-list-ingredients-panel-padding: 1em 0;
+$shopping-list-ingredients-panel-font-size: 1.125rem;
+$shopping-list-ingredient-index-width: 3%;
+$shopping-list-ingredient-name-width: 70%;
+$shopping-list-ingredient-quantity-width: 10%;
+$shopping-list-ingredient-align: center;
+
+//FRIDGE
+$fridge-products-panel-width: 90%;
+$fridge-products-panel-margin: 0 auto;
+$fridge-products-panel-padding: 1em 0;
+$fridge-product-body-width: 100%;
+$fridge-product-index-width: 3%;
+$fridge-product-body-margin: 0.5em 0;
+$fridge-product-background: $white;
+
+//RECIPE VIEW
+$recipe-footer-fa-icon-margin: 0 0.375em 0 0;
+
+//LOGIN
+$login-page-width: 40%;
+$login-page-login-margin: 7rem auto;
+$login-page-container-padding: 2.5em 4em;
+$login-page-image-margin: 1.5em auto;
+$login-page-form-margin: auto;
+$login-page-h1-margin: 0.5em auto;
+$login-page-form-all-children-margin: 0.5em auto;
+$login-notification-margin: 1em auto;
+$login-page-header-color: $second-dark-color;
+$login-page-elements-width: 100% !important;
+
+//FAVOURITE
+$component-header-menu-title-width: 100% !important;

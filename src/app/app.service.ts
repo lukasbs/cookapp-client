@@ -467,13 +467,13 @@ export class AppService {
 
   addErrorMessage(element, message) {
     this.clearClass(element);
-    element.classList.add('alert-danger');
+    element.classList.add('alert-danger', 'notification', 'alert');
     element.innerHTML = message;
   }
 
   addSuccessMessage(element, message) {
     this.clearClass(element);
-    element.classList.add('alert-success');
+    element.classList.add('alert-success', 'notification', 'alert');
     element.innerHTML = message;
   }
 
@@ -482,14 +482,14 @@ export class AppService {
     this.message = {text: '', type: ''};
 
     if (element.classList.contains('alert-danger')) {
-      element.classList.remove('alert-danger');
+      element.classList.remove('alert-danger', 'notification', 'alert');
     } else if (element.classList.contains('alert-success')) {
-      element.classList.remove('alert-success');
+      element.classList.remove('alert-success', 'notification', 'alert');
     }
   }
 
   cutIntoChunks(initialList) {
-    const chunkSize = 5;
+    const chunkSize = 6;
     const listChunked = [];
 
     for (let i = 0, j = 0; i < initialList.length; i += chunkSize, j++) {

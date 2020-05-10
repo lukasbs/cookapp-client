@@ -1,15 +1,21 @@
-<div *ngIf="this.favouriteRecipes.length !== 0">
-  <div *ngFor="let favouriteRecipe of appService.userData.favouriteRecipes; let i = index">
-    <div class="d-flex border border-secondary rounded m-2 bg-light">
-      <div class="d-flex mr-auto p-2 align-items-center">
-        <p class="mb-0 ml-3">{{favouriteRecipe.name}}</p>
-      </div>
-      <div class="p-2">
-        <button type="button" class="btn btn-primary" (click)="previewHandler(i)">Widok</button>
+<div class="component-header-menu-container">
+  <div class="flex-column">
+    <div class="d-flex">
+      <h1 class="component-header-menu-title">Ulubione przepisy</h1>
+    </div>
+    <hr>
+  </div>
+
+  <div class="card-container" *ngIf="this.favouriteRecipes.length !== 0">
+    <div class="card card-panel" *ngFor="let favouriteRecipe of appService.userData.favouriteRecipes; let i = index" (click)="previewHandler(i)">
+      <img src="{{favouriteRecipe.image}}" class="card-img-top card-image" alt="Delicious meal">
+      <div class="card-body">
+        <h2 class="card-title" #favouriteRecipeName [ngClass]="getOverflowClass(favouriteRecipeName)">{{favouriteRecipe.name}}</h2>
       </div>
     </div>
   </div>
-</div>
-<div *ngIf="this.favouriteRecipes.length === 0">
-  <p>Brak ulubionych przepisów!</p>
+
+  <div *ngIf="this.favouriteRecipes.length === 0">
+    <p>Brak ulubionych przepisów!</p>
+  </div>
 </div>

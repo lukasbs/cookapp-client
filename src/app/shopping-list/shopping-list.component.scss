@@ -1,0 +1,24 @@
+@import "../../variables";
+
+.ingredients-panel {
+  width: $shopping-list-ingredients-panel-width;
+  margin: $shopping-list-ingredients-panel-margin;
+  padding: $shopping-list-ingredients-panel-padding;
+  font-size: $shopping-list-ingredients-panel-font-size;
+  font-family: 'Petit Formal Script', sans-serif;
+
+  .ingredient-index {
+    width: $shopping-list-ingredient-index-width;
+    align-self: $shopping-list-ingredient-align;
+  }
+
+  .ingredient-name {
+    width: $shopping-list-ingredient-name-width;
+    align-self: $shopping-list-ingredient-align;
+  }
+
+  .ingredient-quantity {
+    width: $shopping-list-ingredient-quantity-width;
+    align-self: $shopping-list-ingredient-align;
+  }
+}
