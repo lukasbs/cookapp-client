@@ -76,10 +76,6 @@ export class ShoppingListComponent implements OnInit, OnDestroy {
 
   generatePDF() {
     const doc = new jsPDF();
-    doc.addFileToVFS('Tomorrow-Regular.ttf', Tomorrow);
-    doc.addFont('Tomorrow-Regular.ttf', 'Tomorrow', 'normal');
-    doc.setFont('Tomorrow');
-
     doc.setFontSize(35);
     doc.text(70, 20, 'Lista Zakupów');
 

@@ -5,7 +5,7 @@ import {AppService} from '../app.service';
 import {NgForm} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
 import {FridgeItemEditModel} from '../model/FridgeItemEditModel';
-import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
+import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-fridge',
@@ -80,14 +80,6 @@ export class FridgeComponent implements OnInit, OnDestroy {
     this.appService.clearClass(this.messageRef.nativeElement);
     this.appService.deleteFridgeItem(this.fridgeItems[i].name, this.fridgeItems[i].amount, this.fridgeItems[i].expirationDate);
   }
-
-  // editHandler(i: number) {
-  //   this.appService.currentlyEditedFridgeItem = new FridgeItemEditModel(this.fridgeItems[i].name, this.fridgeItems[i].amount.split(' ')[0],
-  //     this.fridgeItems[i].amount.split(' ')[1], this.fridgeItems[i].expirationDate);
-  //
-  //   this.appService.currentlyEditedFridgeItemChanged.next(this.appService.currentlyEditedFridgeItem);
-  //   this.router.navigate(['/fridge-edit']);
-  // }
 
   editHandler(i: number, fridgeEdit) {
     this.appService.currentlyEditedFridgeItem = new FridgeItemEditModel(this.fridgeItems[i].name, this.fridgeItems[i].amount.split(' ')[0],
